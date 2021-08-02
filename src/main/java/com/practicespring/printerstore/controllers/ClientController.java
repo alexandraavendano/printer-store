@@ -1,5 +1,6 @@
 package com.practicespring.printerstore.controllers;
 
+import com.practicespring.printerstore.exceptions.ClientNotFoundException;
 import com.practicespring.printerstore.models.Client;
 import com.practicespring.printerstore.models.Role;
 import com.practicespring.printerstore.service.ClientServices;

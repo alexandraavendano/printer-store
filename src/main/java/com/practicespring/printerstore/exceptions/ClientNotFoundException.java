@@ -1,8 +1,8 @@
-package com.practicespring.printerstore.controllers;
+package com.practicespring.printerstore.exceptions;
 
 public class ClientNotFoundException extends RuntimeException {
 
-    ClientNotFoundException(String id) {
+    public ClientNotFoundException(String id) {
         super("Could not find client " + id);
     }
 }

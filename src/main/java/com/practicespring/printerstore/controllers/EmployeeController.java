@@ -1,5 +1,6 @@
 package com.practicespring.printerstore.controllers;
 
+import com.practicespring.printerstore.exceptions.EmployeeNotFoundException;
 import com.practicespring.printerstore.models.Employee;
 import com.practicespring.printerstore.models.Role;
 import com.practicespring.printerstore.service.EmployeeServices;

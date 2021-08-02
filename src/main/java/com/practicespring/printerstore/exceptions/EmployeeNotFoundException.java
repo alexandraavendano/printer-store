@@ -1,7 +1,7 @@
-package com.practicespring.printerstore.controllers;
+package com.practicespring.printerstore.exceptions;
 
 public class EmployeeNotFoundException extends RuntimeException {
-    EmployeeNotFoundException(String id) {
+    public EmployeeNotFoundException(String id) {
         super("Could not fiend employee " + id);
     }
 }

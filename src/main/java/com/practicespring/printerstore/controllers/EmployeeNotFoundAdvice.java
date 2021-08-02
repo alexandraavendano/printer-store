@@ -1,5 +1,6 @@
 package com.practicespring.printerstore.controllers;
 
+import com.practicespring.printerstore.exceptions.EmployeeNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;

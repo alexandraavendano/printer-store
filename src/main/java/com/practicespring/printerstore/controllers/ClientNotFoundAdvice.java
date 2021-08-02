@@ -1,5 +1,6 @@
 package com.practicespring.printerstore.controllers;
 
+import com.practicespring.printerstore.exceptions.ClientNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
