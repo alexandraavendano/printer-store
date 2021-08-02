@@ -1,13 +1,11 @@
 package com.practicespring.printerstore.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@Table(name = "order_table")
 public class Order {
 
     @Id
@@ -19,6 +17,10 @@ public class Order {
     @ManyToOne
     private State state;
     private Date date;
+
+    public Order() {
+
+    }
 
     public int getId() {
         return id;
