@@ -17,6 +17,14 @@ public class ClientServices {
         this.clientRepository = clientRepository;
     }
 
+    public Client create(Client client) {
+        return clientRepository.save(client);
+    }
+
+    public void delete(String email) {
+        clientRepository.deleteById(email);
+    }
+
     public Optional<Client> findBy(String email) {
         return clientRepository.findById(email);
     }

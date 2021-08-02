@@ -12,6 +12,19 @@ public class Role {
     @ManyToMany
     private List<Path> paths;
 
+    public Role() {
+
+    }
+
+    public Role(String name) {
+        this.name = name;
+    }
+
+    public Role(String name, List<Path> paths) {
+        this.name = name;
+        this.paths = paths;
+    }
+
     public String getName() {
         return name;
     }
