@@ -26,11 +26,11 @@
       <div class="menu_item">
         <nav>
           <ul>
-            <li> <a href="#">Home</a></li>
-            <li> <a href="/about">About</a></li>
-            <li> <a href="#">Services</a> </li>
-            <li> <a href="/contact">Contact</a> </li>
-            <li><a href="/login"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+            <li> <a href="${pageContext.request.contextPath}/#">Home</a></li>
+            <li> <a href="${pageContext.request.contextPath}/about">About</a></li>
+            <li> <a href="${pageContext.request.contextPath}/#">Services</a> </li>
+            <li> <a href="${pageContext.request.contextPath}/contact">Contact</a> </li>
+            <li><a href="${pageContext.request.contextPath}/login"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
               <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
             </svg></a></li>
             <li> <a><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
