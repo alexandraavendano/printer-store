@@ -9,7 +9,7 @@ public class Product {
     private String name;
     private double price;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     private ProductType type; //Structure, Design Service, Print Service, DeliveryService
 
     public int getId() {

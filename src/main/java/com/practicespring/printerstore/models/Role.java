@@ -9,6 +9,7 @@ import java.util.List;
 public class Role {
     @Id
     private String name;
+
     @ManyToMany
     private List<Path> paths;
 

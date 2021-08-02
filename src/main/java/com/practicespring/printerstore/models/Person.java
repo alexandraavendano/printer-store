@@ -2,6 +2,7 @@ package com.practicespring.printerstore.models;
 
 import org.springframework.lang.NonNull;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
@@ -16,7 +17,7 @@ public class Person {
     private String lastName;
     @NonNull
     private String password;    //TODO: Add security!!
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     private Role role;
 
     @NonNull
