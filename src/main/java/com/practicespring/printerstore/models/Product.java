@@ -4,9 +4,12 @@ import javax.persistence.*;
 
 @Entity
 public class Product {
+
     @Id
     private int id;
+
     private String name;
+    private String description;
     private double price;
 
     @OneToOne(cascade = CascadeType.MERGE)
@@ -45,5 +48,21 @@ public class Product {
 
     public void setType(ProductType type) {
         this.type = type;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
 }
