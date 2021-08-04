@@ -1,0 +1,8 @@
+INSERT INTO printerstore.product (id, name, price, type_name, image_id, description) VALUES (1, 'print', 2, 'Print Service', null, 'We can print with a high quality and the best prices');
+INSERT INTO printerstore.product (id, name, price, type_name, image_id, description) VALUES (2, 'design', 15, 'Design Service', null, 'We can design and create a new image for your product');
+INSERT INTO printerstore.product (id, name, price, type_name, image_id, description) VALUES (3, 'installation', 12, 'Installation Service', null, 'Professional that can save you time and effort');
+INSERT INTO printerstore.product (id, name, price, type_name, image_id, description) VALUES (4, 'material 1', 7, 'Material', null, 'Banner is the best material for your exteriors');
+INSERT INTO printerstore.product (id, name, price, type_name, image_id, description) VALUES (5, 'material 2', 8, 'Material', null, 'Vinyl is the best material for your interiors');
+INSERT INTO printerstore.product (id, name, price, type_name, image_id, description) VALUES (6, 'material 3', 10, 'Material', null, 'Shinning vinyl is the best material for your interiors');
+INSERT INTO printerstore.product (id, name, price, type_name, image_id, description) VALUES (7, 'roll-up', 15, 'Structure', null, 'Roll up is the best structure for your conferences, portable and strong');
+INSERT INTO printerstore.product (id, name, price, type_name, image_id, description) VALUES (8, 'spider', 20, 'Structure', null, 'Spider is the best structure for your pocket, it is flexible and it helps your banner to stay up-');
