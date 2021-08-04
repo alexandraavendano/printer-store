@@ -7,6 +7,7 @@ import com.practicespring.printerstore.service.EmployeeServices;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class EmployeeController {
     private final EmployeeServices employeeServices;
 

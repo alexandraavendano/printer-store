@@ -9,6 +9,9 @@ public class Product {
     private String name;
     private double price;
 
+    @OneToOne(cascade = CascadeType.MERGE)
+    private Image image;
+
     @ManyToOne(cascade = CascadeType.MERGE)
     private ProductType type; //Structure, Design Service, Print Service, DeliveryService
 
