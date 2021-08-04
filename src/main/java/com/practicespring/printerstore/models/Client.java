@@ -11,10 +11,6 @@ public class Client extends Person {
     @ManyToMany
     private List<Order> orders;
 
-    public Client() {
-
-    }
-
     public List<Order> getOrders() {
         return orders;
     }
