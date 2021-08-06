@@ -6,13 +6,13 @@ import javax.persistence.*;
 public class Product {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
     private String name;
     private String description;
     private double price;
 
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne(cascade = CascadeType.ALL)
     private Image image;
 
     @ManyToOne(cascade = CascadeType.MERGE)
@@ -64,5 +64,16 @@ public class Product {
 
     public void setImage(Image image) {
         this.image = image;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", type=" + type +
+                '}';
     }
 }

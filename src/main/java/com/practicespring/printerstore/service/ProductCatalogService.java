@@ -18,8 +18,8 @@ public class ProductCatalogService {
         this.productRepository = productRepository;
     }
 
-    public Product create(Product client) {
-        return productRepository.save(client);
+    public Product create(Product product) {
+        return productRepository.save(product);
     }
 
     public void delete(int id) {

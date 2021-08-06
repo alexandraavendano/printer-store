@@ -12,8 +12,10 @@ public class Order {
     private int id;
     private double balance;
     private double totalPrice;
+
     @OneToMany
     private List<Item> items;
+
     @ManyToOne(cascade = CascadeType.MERGE)
     private State state;
     private Date date;
