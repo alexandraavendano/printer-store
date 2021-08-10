@@ -20,9 +20,6 @@ public class Item {
     private State printState;
 
     @OneToOne
-    private Material material;
-
-    @OneToOne
     private Image image;
 
     @OneToMany
@@ -74,14 +71,6 @@ public class Item {
 
     public void setPrintState(State printState) {
         this.printState = printState;
-    }
-
-    public Material getMaterial() {
-        return material;
-    }
-
-    public void setMaterial(Material material) {
-        this.material = material;
     }
 
     public Image getImage() {

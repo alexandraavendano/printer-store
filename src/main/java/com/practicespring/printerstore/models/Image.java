@@ -1,9 +1,6 @@
 package com.practicespring.printerstore.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.*;
 
 @Entity
 public class Image {
@@ -13,7 +10,8 @@ public class Image {
     private Long id;
 
     @Lob
-    private byte[] content;
+    @Column(columnDefinition="MEDIUMBLOB")
+    private String content;
 
     private String name;
 
@@ -25,19 +23,19 @@ public class Image {
         this.id = id;
     }
 
-    public byte[] getContent() {
-        return content;
-    }
-
-    public void setContent(byte[] content) {
-        this.content = content;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }

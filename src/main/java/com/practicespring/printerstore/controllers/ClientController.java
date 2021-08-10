@@ -23,7 +23,6 @@ public class ClientController {
         this.clientServices = clientServices;
     }
 
-
     @GetMapping("/users")
     Client getClient(@RequestParam String id) {
         return clientServices.findBy(id).orElseThrow(() -> new ClientNotFoundException(id));
