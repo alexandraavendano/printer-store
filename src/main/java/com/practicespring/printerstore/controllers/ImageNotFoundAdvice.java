@@ -1,5 +1,7 @@
 package com.practicespring.printerstore.controllers;
 
+import com.practicespring.printerstore.exceptions.ClientNotFoundException;
+import com.practicespring.printerstore.exceptions.CustomError;
 import com.practicespring.printerstore.exceptions.ImageNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -13,7 +15,7 @@ public class ImageNotFoundAdvice {
     @ResponseBody
     @ExceptionHandler(ImageNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String imageNotFoundHandler(ImageNotFoundException ex) {
-        return ex.getMessage();
+    CustomError imageNotFoundHandler(ClientNotFoundException ex) {
+        return new CustomError(HttpStatus.NOT_FOUND.value() , ex.getMessage());
     }
 }

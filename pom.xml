@@ -12,8 +12,8 @@
     <artifactId>BasicSpring2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>BasicSpring2</name>
-    <description>Demo project for Spring Boot</description>
+    <name>printer-store</name>
+    <description>Spring Boot Project</description>
     <properties>
         <java.version>16</java.version>
     </properties>

@@ -1,6 +1,9 @@
 package com.practicespring.printerstore.controllers;
 
+import com.practicespring.printerstore.exceptions.ClientNotFoundException;
+import com.practicespring.printerstore.exceptions.CustomError;
 import com.practicespring.printerstore.exceptions.EmployeeNotFoundException;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -10,10 +13,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class EmployeeNotFoundAdvice {
 
     @ResponseBody
-    @ExceptionHandler
-    @ResponseStatus
-    String employeeNotFoundHandler(EmployeeNotFoundException ex){
-        return ex.getMessage();
+    @ExceptionHandler(EmployeeNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    CustomError employeeNotFoundHandler(ClientNotFoundException ex) {
+        return new CustomError(HttpStatus.NOT_FOUND.value() , ex.getMessage());
     }
-
 }
