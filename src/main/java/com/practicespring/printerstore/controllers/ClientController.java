@@ -5,6 +5,7 @@ import com.practicespring.printerstore.models.Client;
 import com.practicespring.printerstore.models.Role;
 import com.practicespring.printerstore.service.ClientServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.logging.Level;
@@ -17,22 +18,25 @@ public class ClientController {
     static final Logger LOGGER = Logger.getLogger(EmployeeController.class.getName());
 
     private final ClientServices clientServices;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public ClientController(ClientServices clientServices){
+    public ClientController(ClientServices clientServices, BCryptPasswordEncoder bCryptPasswordEncoder){
         this.clientServices = clientServices;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    @GetMapping("/users")
-    Client getClient(@RequestParam String id) {
-        return clientServices.findBy(id).orElseThrow(() -> new ClientNotFoundException(id));
+    @GetMapping("/users/login")
+    Client getClient(@RequestBody Client client) {
+        return clientServices.findBy(client.getEmail()).orElseThrow(() -> new ClientNotFoundException(client.getEmail()));
     }
 
-    @PostMapping("/users")
+    @PostMapping("/users/signin")
     Client createClient(@RequestBody Client newClient) {
-        LOGGER.log(Level.INFO, "Saving a new client");
+        LOGGER.log(Level.FINE, "Saving a new client");
         Role role = new Role("client");
         newClient.setRole(role);
+        newClient.setPassword(bCryptPasswordEncoder.encode(newClient.getPassword()));
         return clientServices.create(newClient);
     }
 
