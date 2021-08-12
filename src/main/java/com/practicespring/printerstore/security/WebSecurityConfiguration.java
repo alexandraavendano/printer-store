@@ -13,6 +13,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+//https://www.toptal.com/spring/spring-security-tutorial
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
@@ -20,11 +21,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService userDetailsService;
 
-//    //TODO: Check which url work for me
-//    private static final String[] AUTH_WHITELIST = {
-//            "/v2/api-docs",
-//            "/swagger-resources",
-//    };
+
+    private static final String[] AUTH_WHITELIST = {
+            "/users/signin"
+    };
 
     public WebSecurityConfiguration(UserDetailsService userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
@@ -32,17 +32,21 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.cors().and().csrf().disable().authorizeRequests()
-//                .antMatchers(AUTH_WHITELIST).permitAll()
-                .antMatchers(HttpMethod.POST, "/users/signin").permitAll()
-                .anyRequest().authenticated()
-                .and().addFilter(new AuthenticationFilter(authenticationManager()))
+        httpSecurity.cors().and().csrf().disable()
+                .authorizeRequests()
+                    .antMatchers(HttpMethod.POST, AUTH_WHITELIST).permitAll()
+                    .antMatchers( "/employees/**", "/products/**").hasRole("ADMIN")
+                    .antMatchers( "/images/**").hasRole("EMPLOYEE")
+                    .anyRequest().authenticated()
+                    .and()
+                .addFilter(new AuthenticationFilter(authenticationManager()))
                 .addFilter(new AuthorizationFilter(authenticationManager()))
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 
-    public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-        authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
     }
 
     @Bean

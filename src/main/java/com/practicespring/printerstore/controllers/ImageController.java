@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping("/images")
 public class ImageController {
 
     private final ImageService imageService;
@@ -22,12 +23,12 @@ public class ImageController {
         this.imageService = imageService;
     }
 
-    @GetMapping("/images")
+    @GetMapping("")
     Image getClient(@RequestParam Long id) {
         return imageService.findBy(id).orElseThrow(() -> new ImageNotFoundException(id));
     }
 
-    @PostMapping( "/images")
+    @PostMapping( "/create")
     Image getProducts(@RequestParam("images") MultipartFile files){
         Optional<Image> imageOptional = Optional.empty();
 
@@ -40,7 +41,7 @@ public class ImageController {
         return imageOptional.orElseThrow(ImageNotCreatedException::new);
     }
 
-    @DeleteMapping("/images/{id}")
+    @DeleteMapping("/{id}")
     void deleteEmployee(@PathVariable Long id) {
         imageService.delete(id);
     }

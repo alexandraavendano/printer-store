@@ -1,7 +1,6 @@
 package com.practicespring.printerstore.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.practicespring.printerstore.models.Client;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,7 +18,7 @@ import java.util.Date;
 
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    private AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
 
     public AuthenticationFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
@@ -29,18 +28,19 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         try {
-            Credentials creds = new ObjectMapper().readValue(request.getInputStream(), Credentials.class);
-            return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(creds.getUserName(), creds.getPassword(),new ArrayList<>()));
+            Credentials cred = new ObjectMapper().readValue(request.getInputStream(), Credentials.class);
+            return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(cred.getUserName(), cred.getPassword(),new ArrayList<>()));
         } catch(IOException e) {
             throw new RuntimeException("Could not read request" + e);
         }
     }
 
-
+    @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain, Authentication authentication) {
         String token = Jwts.builder()
                 .setSubject(((User) authentication.getPrincipal()).getUsername())
-                .setExpiration(new Date(System.currentTimeMillis() + 864_000_000))
+                .claim("role", ((User) authentication.getPrincipal()).getAuthorities().iterator().next().getAuthority())
+                .setExpiration(new Date(System.currentTimeMillis() + 7_200_000))      //2 hours
                 .signWith(SignatureAlgorithm.HS512, "SecretKeyToGenJWTs".getBytes())
                 .compact();
 

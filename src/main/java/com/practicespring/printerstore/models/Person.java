@@ -16,7 +16,8 @@ public class Person {
     private String firstName;
     private String lastName;
     @NonNull
-    private String password;    //TODO: Add security!!
+    private String password;
+
     @ManyToOne(cascade = CascadeType.MERGE)
     private Role role;
 

@@ -15,7 +15,7 @@ public class EmployeeNotFoundAdvice {
     @ResponseBody
     @ExceptionHandler(EmployeeNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    CustomError employeeNotFoundHandler(ClientNotFoundException ex) {
+    CustomError employeeNotFoundHandler(EmployeeNotFoundException ex) {
         return new CustomError(HttpStatus.NOT_FOUND.value() , ex.getMessage());
     }
 }

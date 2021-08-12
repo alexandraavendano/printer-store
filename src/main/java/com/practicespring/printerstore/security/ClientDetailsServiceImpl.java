@@ -1,7 +1,11 @@
 package com.practicespring.printerstore.security;
 
 import com.practicespring.printerstore.models.Client;
-import com.practicespring.printerstore.repositories.ClientRepository;
+import com.practicespring.printerstore.models.Employee;
+import com.practicespring.printerstore.models.Person;
+import com.practicespring.printerstore.service.ClientServices;
+import com.practicespring.printerstore.service.EmployeeServices;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,17 +17,30 @@ import java.util.Optional;
 
 @Component
 public class ClientDetailsServiceImpl implements UserDetailsService {
-    private final ClientRepository userRepository;
+    private final ClientServices clientServices;
+    private final EmployeeServices employeeServices;
 
-    public ClientDetailsServiceImpl(ClientRepository userRepository) {
-        this.userRepository = userRepository;
+    public ClientDetailsServiceImpl(ClientServices clientServices, EmployeeServices employeeServices) {
+        this.clientServices = clientServices;
+        this.employeeServices = employeeServices;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<Client> client = userRepository.findByEmail(username);
-        Client validatedClient = client.orElseThrow(() -> new UsernameNotFoundException(username));
-        return new User(validatedClient.getEmail(), validatedClient.getPassword(), Collections.emptyList());
+        Optional<Client> client = clientServices.findBy(username);
+        Optional<Employee> employee = employeeServices.findBy(username);
+        Person validatedUser = null;
+
+        if(employee.isPresent()) {
+            validatedUser = employee.get();
+        } else if(client.isPresent()){
+            validatedUser = client.get();
+        } else {
+           throw new UsernameNotFoundException(username);
+        }
+
+        return new User(validatedUser.getEmail(), validatedUser.getPassword(), Collections.singleton(new SimpleGrantedAuthority(validatedUser.getRole().getName())));
+
     }
 }
 

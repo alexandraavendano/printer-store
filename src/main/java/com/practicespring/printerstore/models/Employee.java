@@ -6,6 +6,11 @@ import javax.persistence.Entity;
 public class Employee extends Person {
     private String jobTitle;
 
+    public Employee(){
+        super();
+        this.setRole(new Role("ROLE_EMPLOYEE"));
+    }
+
     public String getJobTitle() {
         return jobTitle;
     }

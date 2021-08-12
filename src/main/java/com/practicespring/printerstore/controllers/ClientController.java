@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @RestController
+@RequestMapping("/users")
 @CrossOrigin(origins = "http://localhost:3000")
 public class ClientController {
 
@@ -26,21 +27,19 @@ public class ClientController {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    @GetMapping("/users/login")
+    @GetMapping("/login")
     Client getClient(@RequestBody Client client) {
         return clientServices.findBy(client.getEmail()).orElseThrow(() -> new ClientNotFoundException(client.getEmail()));
     }
 
-    @PostMapping("/users/signin")
+    @PostMapping("/signin")
     Client createClient(@RequestBody Client newClient) {
         LOGGER.log(Level.FINE, "Saving a new client");
-        Role role = new Role("client");
-        newClient.setRole(role);
         newClient.setPassword(bCryptPasswordEncoder.encode(newClient.getPassword()));
         return clientServices.create(newClient);
     }
 
-    @DeleteMapping("/users/{id}")
+    @DeleteMapping("/{id}")
     void deleteEmployee(@PathVariable String id) {
         clientServices.delete(id);
     }
