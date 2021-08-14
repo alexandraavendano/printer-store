@@ -21,7 +21,7 @@ public class EmployeeController {
         return employeeServices.findBy(id).orElseThrow(() -> new EmployeeNotFoundException(id));
     }
 
-    @PostMapping("/signin")
+    @PostMapping("/signup")
     Employee create(@RequestBody Employee newEmployee){
         return employeeServices.create(newEmployee);
     }

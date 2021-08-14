@@ -29,6 +29,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         try {
             Credentials cred = new ObjectMapper().readValue(request.getInputStream(), Credentials.class);
+
             return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(cred.getUserName(), cred.getPassword(),new ArrayList<>()));
         } catch(IOException e) {
             throw new RuntimeException("Could not read request" + e);
@@ -36,7 +37,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     }
 
     @Override
-    protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain, Authentication authentication) {
+    protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain, Authentication authentication) throws IOException {
         String token = Jwts.builder()
                 .setSubject(((User) authentication.getPrincipal()).getUsername())
                 .claim("role", ((User) authentication.getPrincipal()).getAuthorities().iterator().next().getAuthority())
@@ -44,6 +45,8 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
                 .signWith(SignatureAlgorithm.HS512, "SecretKeyToGenJWTs".getBytes())
                 .compact();
 
+        response.addHeader("Content-Type", "application/json");
+        response.getWriter().write("{ \"authorization\": \"" + token + "\" }");
         response.addHeader("Authorization","Bearer " + token);
     }
 

@@ -1,8 +1,8 @@
 package com.practicespring.printerstore.controllers;
 
-import com.practicespring.printerstore.exceptions.ClientNotFoundException;
+import com.practicespring.printerstore.exceptions.EmployeeNotFoundException;
 import com.practicespring.printerstore.models.Client;
-import com.practicespring.printerstore.models.Role;
+import com.practicespring.printerstore.models.Employee;
 import com.practicespring.printerstore.service.ClientServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -27,12 +27,7 @@ public class ClientController {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    @GetMapping("/login")
-    Client getClient(@RequestBody Client client) {
-        return clientServices.findBy(client.getEmail()).orElseThrow(() -> new ClientNotFoundException(client.getEmail()));
-    }
-
-    @PostMapping("/signin")
+    @PostMapping("/signup")
     Client createClient(@RequestBody Client newClient) {
         LOGGER.log(Level.FINE, "Saving a new client");
         newClient.setPassword(bCryptPasswordEncoder.encode(newClient.getPassword()));
