@@ -1,21 +1,22 @@
 package com.practicespring.printerstore.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private int id;
     private String name;
     private String description;
     private double price;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Image image;
+    @ManyToMany
+    private List<Image> images;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     private ProductType type; //Structure, Design Service, Print Service, DeliveryService
 
     public int getId() {
@@ -58,12 +59,12 @@ public class Product {
         this.description = description;
     }
 
-    public Image getImage() {
-        return image;
+    public List<Image> getImage() {
+        return images;
     }
 
-    public void setImage(Image image) {
-        this.image = image;
+    public void setImage(List<Image> image) {
+        this.images = image;
     }
 
     @Override
