@@ -7,6 +7,7 @@ import com.practicespring.printerstore.service.EmployeeServices;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/employees")
 @CrossOrigin(origins = "http://localhost:3000")
 public class EmployeeController {
     private final EmployeeServices employeeServices;
@@ -15,19 +16,17 @@ public class EmployeeController {
         this.employeeServices = employeeServices;
     }
 
-    @GetMapping("/employees/{id}")
+    @GetMapping("/{id}")
     Employee get(@PathVariable String id){
         return employeeServices.findBy(id).orElseThrow(() -> new EmployeeNotFoundException(id));
     }
 
-    @PostMapping("/employees")
+    @PostMapping("/signup")
     Employee create(@RequestBody Employee newEmployee){
-        Role role = new Role("employee");
-        newEmployee.setRole(role);
         return employeeServices.create(newEmployee);
     }
 
-    @DeleteMapping("/employees/{id}")
+    @DeleteMapping("/{id}")
     void delete(@PathVariable String id){
         employeeServices.delete(id);
     }

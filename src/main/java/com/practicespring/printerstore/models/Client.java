@@ -11,6 +11,11 @@ public class Client extends Person {
     @ManyToMany
     private List<Order> orders;
 
+    public Client(){
+        super();
+        this.setRole(new Role("ROLE_CLIENT"));
+    }
+
     public List<Order> getOrders() {
         return orders;
     }
