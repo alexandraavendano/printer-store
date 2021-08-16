@@ -28,4 +28,7 @@ public class EmployeeServices {
     public Optional<Employee> findBy(String email) {
         return employeeRepository.findById(email);
     }
+    public Iterable<Employee> findAll() {
+        return employeeRepository.findAll();
+    }
 }

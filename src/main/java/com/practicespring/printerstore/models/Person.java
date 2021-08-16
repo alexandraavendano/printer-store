@@ -1,5 +1,7 @@
 package com.practicespring.printerstore.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.CascadeType;
@@ -47,10 +49,12 @@ public class Person {
     }
 
     @NonNull
+    @JsonIgnore
     public String getPassword() {
         return password;
     }
 
+    @JsonProperty
     public void setPassword(@NonNull String password) {
         this.password = password;
     }
