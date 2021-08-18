@@ -10,9 +10,7 @@ public class CustomizableProduct extends Product {
     @OneToMany
     private List<RawProduct> customizable;
 
-    public CustomizableProduct() {
-
-    }
+    public CustomizableProduct() {}
 
     public CustomizableProduct(List<RawProduct> customizable) {
         this.customizable = customizable;

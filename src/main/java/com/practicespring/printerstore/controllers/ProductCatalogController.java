@@ -35,7 +35,7 @@ public class ProductCatalogController {
     }
 
     @GetMapping( "/customizable/{id}")
-    Product getCustomizableProductById(@PathVariable int id){
+    CustomizableProduct getCustomizableProductById(@PathVariable int id){
         return this.customizableProductService.findBy(id).orElseThrow(() -> new ProductNotFoundException(id));
     }
 
