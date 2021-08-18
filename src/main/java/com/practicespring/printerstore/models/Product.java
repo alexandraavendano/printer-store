@@ -13,11 +13,11 @@ public class Product {
     private String description;
     private double price;
 
-    @ManyToMany
-    private List<Image> images;
-
     @ManyToOne
     private ProductType type; //Structure, Design Service, Print Service, DeliveryService
+
+    @ManyToMany
+    private List<Image> images;
 
     public int getId() {
         return id;
@@ -59,11 +59,11 @@ public class Product {
         this.description = description;
     }
 
-    public List<Image> getImage() {
+    public List<Image> getImages() {
         return images;
     }
 
-    public void setImage(List<Image> image) {
+    public void setImages(List<Image> image) {
         this.images = image;
     }
 
