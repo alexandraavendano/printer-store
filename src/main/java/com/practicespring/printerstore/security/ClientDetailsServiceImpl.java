@@ -4,7 +4,7 @@ import com.practicespring.printerstore.models.Client;
 import com.practicespring.printerstore.models.Employee;
 import com.practicespring.printerstore.models.Person;
 import com.practicespring.printerstore.service.ClientServices;
-import com.practicespring.printerstore.service.EmployeeServices;
+import com.practicespring.printerstore.service.EmployeeService;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,9 +18,9 @@ import java.util.Optional;
 @Component
 public class ClientDetailsServiceImpl implements UserDetailsService {
     private final ClientServices clientServices;
-    private final EmployeeServices employeeServices;
+    private final EmployeeService employeeServices;
 
-    public ClientDetailsServiceImpl(ClientServices clientServices, EmployeeServices employeeServices) {
+    public ClientDetailsServiceImpl(ClientServices clientServices, EmployeeService employeeServices) {
         this.clientServices = clientServices;
         this.employeeServices = employeeServices;
     }

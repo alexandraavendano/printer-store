@@ -3,6 +3,7 @@ package com.practicespring.printerstore.models;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+//TODO: Remove category
 @Entity
 public class ProductType {
     @Id

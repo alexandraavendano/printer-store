@@ -2,7 +2,7 @@ package com.practicespring.printerstore.controllers;
 
 import com.practicespring.printerstore.exceptions.EmployeeNotFoundException;
 import com.practicespring.printerstore.models.Employee;
-import com.practicespring.printerstore.service.EmployeeServices;
+import com.practicespring.printerstore.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://localhost:3000")
 public class EmployeeController {
 
-    private final EmployeeServices employeeServices;
+    private final EmployeeService employeeServices;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public EmployeeController(EmployeeServices employeeServices, BCryptPasswordEncoder bCryptPasswordEncoder){
+    public EmployeeController(EmployeeService employeeServices, BCryptPasswordEncoder bCryptPasswordEncoder){
         this.employeeServices = employeeServices;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }

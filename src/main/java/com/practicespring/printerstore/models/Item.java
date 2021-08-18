@@ -23,7 +23,10 @@ public class Item {
     private Image image;
 
     @OneToMany
-    private List<Product> products;
+    private List<CustomizableProduct> products;
+
+    @OneToMany
+    private List<RawProduct> rawProducts;
 
     public int getId() {
         return id;
@@ -81,11 +84,19 @@ public class Item {
         this.image = image;
     }
 
-    public List<Product> getProducts() {
+    public List<CustomizableProduct> getProducts() {
         return products;
     }
 
-    public void setProducts(List<Product> products) {
+    public void setProducts(List<CustomizableProduct> products) {
         this.products = products;
+    }
+
+    public List<RawProduct> getRawProducts() {
+        return rawProducts;
+    }
+
+    public void setRawProducts(List<RawProduct> rawProducts) {
+        this.rawProducts = rawProducts;
     }
 }

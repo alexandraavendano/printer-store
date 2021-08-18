@@ -3,7 +3,7 @@ package com.practicespring.printerstore.models;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
+@MappedSuperclass
 public class Product {
 
     @Id
@@ -11,6 +11,7 @@ public class Product {
     private int id;
     private String name;
     private String description;
+    private String specifications;
     private double price;
 
     @ManyToOne
@@ -67,14 +68,11 @@ public class Product {
         this.images = image;
     }
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", type=" + type +
-                '}';
+    public String getSpecifications() {
+        return specifications;
+    }
+
+    public void setSpecifications(String specifications) {
+        this.specifications = specifications;
     }
 }

@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class EmployeeServices {
+public class EmployeeService {
 
     private final EmployeeRepository employeeRepository;
 
     @Autowired
-    public EmployeeServices(EmployeeRepository employeeRepository) {
+    public EmployeeService(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
 
