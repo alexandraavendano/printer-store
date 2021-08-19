@@ -5,9 +5,10 @@ import javax.persistence.Id;
 
 @Entity
 public class ProductType {
-    @Id
+
     private String name;
-    private String category;
+    @Id
+    private String subType;
 
     public String getName() {
         return name;
@@ -17,11 +18,11 @@ public class ProductType {
         this.name = name;
     }
 
-    public String getCategory() {
-        return category;
+    public String getSubType() {
+        return subType;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setSubType(String subType) {
+        this.subType = subType;
     }
 }

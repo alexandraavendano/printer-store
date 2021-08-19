@@ -19,6 +19,9 @@ public class Product {
     @ManyToMany
     private List<Image> images;
 
+    @OneToMany
+    private List<Product> customizable;
+
     public int getId() {
         return id;
     }
