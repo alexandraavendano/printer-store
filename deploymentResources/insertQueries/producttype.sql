@@ -1,6 +1,10 @@
-INSERT INTO printerstore.producttype (name) VALUES ('Print Service');
-INSERT INTO printerstore.producttype (name) VALUES ('Design Service');
-INSERT INTO printerstore.producttype (name) VALUES ('Delivery Service');
-INSERT INTO printerstore.producttype (name) VALUES ('Installation Service');
-INSERT INTO printerstore.producttype (name) VALUES ('Structure');
-INSERT INTO printerstore.producttype (name) VALUES ('Material');
+INSERT INTO printerstore.producttype (name, subtype) VALUES ('Service', 'Print');
+INSERT INTO printerstore.producttype (name, subtype) VALUES ('Service', 'Delivery');
+INSERT INTO printerstore.producttype (name, subtype) VALUES ('Service', 'Design');
+INSERT INTO printerstore.producttype (name, subtype) VALUES ('Service', 'Installation');
+INSERT INTO printerstore.producttype (name, subtype) VALUES ('Raw', 'Structure');
+INSERT INTO printerstore.producttype (name, subtype) VALUES ('Raw', 'Material');
+INSERT INTO printerstore.producttype (name, subtype) VALUES ('Customizable', 'Signs & Banner');
+INSERT INTO printerstore.producttype (name, subtype) VALUES ('Customizable', 'Marketing Materials');
+INSERT INTO printerstore.producttype (name, subtype) VALUES ('Customizable', 'Promotional Products');
+INSERT INTO printerstore.producttype (name, subtype) VALUES ('Customizable', 'Wall art');

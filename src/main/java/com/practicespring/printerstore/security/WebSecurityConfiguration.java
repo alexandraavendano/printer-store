@@ -1,7 +1,6 @@
 package com.practicespring.printerstore.security;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -22,7 +21,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     private final UserDetailsService userDetailsService;
 
     private static final String[] AUTH_WHITELIST = {
-            "/users/signup"
+            "/users/signup",
+            "/products/**"
     };
 
     public WebSecurityConfiguration(UserDetailsService userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
@@ -31,11 +31,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.cors().and().csrf().disable()
+        httpSecurity.csrf().disable()
                 .authorizeRequests()
-                    .antMatchers(HttpMethod.POST, AUTH_WHITELIST).permitAll()
-                    .antMatchers( "/employees/**", "/products/**").hasRole("ADMIN")
-                    .antMatchers( "/images/**").hasRole("EMPLOYEE")
+                    .antMatchers(AUTH_WHITELIST).permitAll()
+                    .antMatchers( "/employees/**").hasRole("ADMIN")
                     .anyRequest().authenticated()
                     .and()
                 .addFilter(new AuthenticationFilter(authenticationManager()))

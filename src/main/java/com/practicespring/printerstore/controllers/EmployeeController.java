@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class EmployeeController {
 
     private final EmployeeServices employeeServices;
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     public EmployeeController(EmployeeServices employeeServices, BCryptPasswordEncoder bCryptPasswordEncoder){

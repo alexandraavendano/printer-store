@@ -15,7 +15,8 @@
     <name>printer-store</name>
     <description>Spring Boot Project</description>
     <properties>
-        <java.version>16</java.version>
+        <!--SonarQube does not work with 16-->
+        <java.version>11</java.version>
     </properties>
     <dependencies>
         <dependency>
@@ -89,6 +90,12 @@
             <version>0.9.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.sonarsource.scanner.maven</groupId>
+            <artifactId>sonar-maven-plugin</artifactId>
+            <version>3.9.0.2155</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -97,7 +104,11 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.9.0.2155</version>
+            </plugin>
         </plugins>
     </build>
-
 </project>
