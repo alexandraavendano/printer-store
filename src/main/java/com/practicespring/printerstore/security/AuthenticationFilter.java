@@ -1,5 +1,6 @@
 package com.practicespring.printerstore.security;
 
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -27,9 +28,10 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(JsonParser.Feature.AUTO_CLOSE_SOURCE, true);
         try {
-            Credentials cred = new ObjectMapper().readValue(request.getInputStream(), Credentials.class);
-
+            Credentials cred = objectMapper.readValue(request.getInputStream(), Credentials.class);
             return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(cred.getUserName(), cred.getPassword(),new ArrayList<>()));
         } catch(IOException e) {
             throw new RuntimeException("Could not read request" + e);
