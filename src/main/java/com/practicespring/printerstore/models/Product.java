@@ -70,6 +70,14 @@ public class Product {
         this.images = image;
     }
 
+    public List<Product> getCustomizable() {
+        return customizable;
+    }
+
+    public void setCustomizable(List<Product> customizable) {
+        this.customizable = customizable;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
