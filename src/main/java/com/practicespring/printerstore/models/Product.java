@@ -14,7 +14,7 @@ public class Product {
     private double price;
 
     @ManyToOne
-    private ProductType type; //Structure, Design Service, Print Service, DeliveryService
+    private ProductType type;
 
     @ManyToMany
     private List<Image> images;

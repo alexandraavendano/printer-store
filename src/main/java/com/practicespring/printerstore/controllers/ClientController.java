@@ -1,8 +1,7 @@
 package com.practicespring.printerstore.controllers;
 
-import com.practicespring.printerstore.exceptions.EmployeeNotFoundException;
+import com.practicespring.printerstore.exceptions.ClientNotFoundException;
 import com.practicespring.printerstore.models.Client;
-import com.practicespring.printerstore.models.Employee;
 import com.practicespring.printerstore.service.ClientServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -32,6 +31,11 @@ public class ClientController {
         LOGGER.log(Level.FINE, "Saving a new client");
         newClient.setPassword(bCryptPasswordEncoder.encode(newClient.getPassword()));
         return clientServices.create(newClient);
+    }
+
+    @GetMapping( "/{id}")
+    Client getClientByEmail(@PathVariable String id){
+        return clientServices.findBy(id).orElseThrow(() -> new ClientNotFoundException(id));
     }
 
     @DeleteMapping("/{id}")

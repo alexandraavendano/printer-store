@@ -1,6 +1,9 @@
 package com.practicespring.printerstore.models;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +21,9 @@ public class Order {
 
     @ManyToOne(cascade = CascadeType.MERGE)
     private State state;
-    private Date date;
+
+    @CreationTimestamp
+    private LocalDateTime date;
 
     public Order() {
 
@@ -64,11 +69,11 @@ public class Order {
         this.state = state;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 }

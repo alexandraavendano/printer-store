@@ -2,6 +2,7 @@ package com.practicespring.printerstore.models;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import java.util.List;
 import java.util.Objects;
 
@@ -20,8 +21,19 @@ public class Client extends Person {
         return orders;
     }
 
+    @OneToMany
+    public List<Payment> creditCards;
+
     public void setOrders(List<Order> orders) {
         this.orders = orders;
+    }
+
+    public List<Payment> getCreditCards() {
+        return creditCards;
+    }
+
+    public void setCreditCards(List<Payment> creditCards) {
+        this.creditCards = creditCards;
     }
 
     @Override

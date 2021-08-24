@@ -13,17 +13,17 @@ public class Item {
     private int id;
     private double height;
     private double width;
-    private double price;
-    private double subtotal;
+    private double price; //Total price per item including customizations
+    private int quantity;
 
     @OneToOne
-    private State printState;
+    private State state;
 
     @OneToOne
     private Image image;
 
     @OneToMany
-    private List<Product> products;
+    private List<Product> customizations;
 
     public int getId() {
         return id;
@@ -57,20 +57,12 @@ public class Item {
         this.price = price;
     }
 
-    public double getSubtotal() {
-        return subtotal;
+    public State getState() {
+        return state;
     }
 
-    public void setSubtotal(double subtotal) {
-        this.subtotal = subtotal;
-    }
-
-    public State getPrintState() {
-        return printState;
-    }
-
-    public void setPrintState(State printState) {
-        this.printState = printState;
+    public void setState(State printState) {
+        this.state = printState;
     }
 
     public Image getImage() {
@@ -81,11 +73,11 @@ public class Item {
         this.image = image;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public List<Product> getCustomizations() {
+        return customizations;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setCustomizations(List<Product> products) {
+        this.customizations = products;
     }
 }
