@@ -1,6 +1,5 @@
 package com.practicespring.printerstore.controllers;
 
-import com.practicespring.printerstore.exceptions.ClientNotFoundException;
 import com.practicespring.printerstore.models.Payment;
 import com.practicespring.printerstore.service.PaymentServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +7,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,7 +15,7 @@ import java.util.logging.Logger;
 @CrossOrigin(origins = "http://localhost:3000")
 class PaymentController {
 
-    static final Logger LOGGER = Logger.getLogger(EmployeeController.class.getName());
+    static final Logger LOGGER = Logger.getLogger(PaymentController.class.getName());
 
     private final PaymentServices paymentServices;
     private BCryptPasswordEncoder bCryptPasswordEncoder;

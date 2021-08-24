@@ -4,7 +4,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 @Entity
@@ -12,28 +12,30 @@ import java.util.List;
 public class Order {
 
     @Id
-    private int id;
+    @GeneratedValue
+    private long id;
     private double balance;
     private double totalPrice;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL , orphanRemoval = true)
     private List<Item> items;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     private State state;
 
     @CreationTimestamp
-    private LocalDateTime date;
+    private ZonedDateTime date;
 
-    public Order() {
+    @ManyToOne
+    private Client client;
 
-    }
+    public Order() {}
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -69,11 +71,19 @@ public class Order {
         this.state = state;
     }
 
-    public LocalDateTime getDate() {
+    public ZonedDateTime getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(ZonedDateTime date) {
         this.date = date;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 }

@@ -22,11 +22,11 @@ public class ProductCatalogService {
         return productRepository.save(product);
     }
 
-    public void delete(int id) {
+    public void delete(Long id) {
         productRepository.deleteById(id);
     }
 
-    public Optional<Product> findBy(int id) {
+    public Optional<Product> findBy(Long id) {
         return productRepository.findById(id);
     }
 

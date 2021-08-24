@@ -1,18 +1,16 @@
 package com.practicespring.printerstore.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class Item {
 
     @Id
+    @GeneratedValue
     private int id;
-    private double height;
-    private double width;
+    private String height;
+    private String width;
     private double price; //Total price per item including customizations
     private int quantity;
 
@@ -22,7 +20,7 @@ public class Item {
     @OneToOne
     private Image image;
 
-    @OneToMany
+    @ManyToMany
     private List<Product> customizations;
 
     public int getId() {
@@ -33,19 +31,19 @@ public class Item {
         this.id = id;
     }
 
-    public double getHeight() {
+    public String getHeight() {
         return height;
     }
 
-    public void setHeight(double height) {
+    public void setHeight(String height) {
         this.height = height;
     }
 
-    public double getWidth() {
+    public String getWidth() {
         return width;
     }
 
-    public void setWidth(double width) {
+    public void setWidth(String width) {
         this.width = width;
     }
 
@@ -57,12 +55,20 @@ public class Item {
         this.price = price;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     public State getState() {
         return state;
     }
 
-    public void setState(State printState) {
-        this.state = printState;
+    public void setState(State state) {
+        this.state = state;
     }
 
     public Image getImage() {
@@ -77,7 +83,7 @@ public class Item {
         return customizations;
     }
 
-    public void setCustomizations(List<Product> products) {
-        this.customizations = products;
+    public void setCustomizations(List<Product> customizations) {
+        this.customizations = customizations;
     }
 }

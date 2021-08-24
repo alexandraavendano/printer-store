@@ -31,7 +31,7 @@ public class ProductCatalogController {
     }
 
     @GetMapping( "/{id}")
-    Product getProductsByType(@PathVariable int id){
+    Product getProductsByType(@PathVariable Long id){
         return this.productCatalogService.findBy(id).orElseThrow(() -> new ProductNotFoundException(id));
     }
 
@@ -43,7 +43,7 @@ public class ProductCatalogController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping( "/{id}")
-    void getProducts(@PathVariable int id){
+    void getProducts(@PathVariable Long id){
         this.productCatalogService.delete(id);
     }
 }
