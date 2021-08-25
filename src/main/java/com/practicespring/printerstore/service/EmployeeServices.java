@@ -1,5 +1,8 @@
 package com.practicespring.printerstore.service;
 
+import com.google.common.collect.Iterables;
+
+import com.google.common.collect.Sets;
 import com.practicespring.printerstore.models.Employee;
 import com.practicespring.printerstore.repositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +28,22 @@ public class EmployeeServices {
         employeeRepository.deleteById(email);
     }
 
-    public Optional<Employee> findBy(String email) {
+    public Optional<Employee> findByEmail(String email) {
         return employeeRepository.findById(email);
     }
+
+    public Iterable<Employee> findByPartial(String partialQuery) {
+        Iterable<Employee> employeesByEmail = employeeRepository.getAllByEmailIsContaining(partialQuery);
+        Iterable<Employee> employeesByFirstName = employeeRepository.getAllByFirstNameIsContaining(partialQuery);
+        Iterable<Employee> employeesByLastName = employeeRepository.getAllByLastNameIsContaining(partialQuery);
+        Iterable<Employee> employeesByJobTitle = employeeRepository.getAllByJobTitleIsContaining(partialQuery);
+        Iterable<Employee> employeesByRoleTitle = employeeRepository.getAllByRoleNameContains(partialQuery);
+
+        Iterable<Employee> employees = Iterables.concat(employeesByEmail, employeesByFirstName, employeesByLastName, employeesByJobTitle, employeesByRoleTitle);
+
+        return Sets.newHashSet(employees);
+    }
+
     public Iterable<Employee> findAll() {
         return employeeRepository.findAll();
     }

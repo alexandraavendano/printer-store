@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/employees")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -22,13 +24,17 @@ public class EmployeeController {
     }
 
     @GetMapping("")
-    Iterable<Employee> getAll(){
-        return employeeServices.findAll();
+    Iterable<Employee> getAll(@RequestParam Optional<String> query){
+        if(query.isPresent()) {
+            return employeeServices.findByPartial(query.get());
+        } else {
+            return employeeServices.findAll();
+        }
     }
 
     @GetMapping("/{id}")
-    Employee get(@PathVariable String id){
-        return employeeServices.findBy(id).orElseThrow(() -> new EmployeeNotFoundException(id));
+    Employee getByExactEmail(@PathVariable String id){
+        return employeeServices.findByEmail(id).orElseThrow(() -> new EmployeeNotFoundException(id));
     }
 
     @PostMapping("/signup")
