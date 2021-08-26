@@ -1,5 +1,7 @@
 package com.practicespring.printerstore.models;
 
+import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -13,7 +15,7 @@ public class Product {
     private String description;
     private double price;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private ProductType type;
 
     @ManyToMany
@@ -21,6 +23,9 @@ public class Product {
 
     @OneToMany
     private List<Product> customizable;
+
+    public Product() {
+    }
 
     public Long getId() {
         return id;

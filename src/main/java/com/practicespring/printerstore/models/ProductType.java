@@ -6,9 +6,9 @@ import javax.persistence.Id;
 @Entity
 public class ProductType {
 
-    private String name;
     @Id
     private String subType;
+    private String name;
 
     public String getName() {
         return name;

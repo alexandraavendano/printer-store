@@ -79,4 +79,15 @@ public class Person {
     public int hashCode() {
         return Objects.hash(email, firstName, lastName, password);
     }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "email='" + email + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                '}';
+    }
 }

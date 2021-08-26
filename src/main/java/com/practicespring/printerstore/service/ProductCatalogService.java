@@ -1,7 +1,9 @@
 package com.practicespring.printerstore.service;
 
 import com.practicespring.printerstore.models.Product;
+import com.practicespring.printerstore.models.ProductType;
 import com.practicespring.printerstore.repositories.ProductRepository;
+import com.practicespring.printerstore.repositories.ProductTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +14,12 @@ import java.util.Optional;
 public class ProductCatalogService {
 
     ProductRepository productRepository;
+    ProductTypeRepository productTypeRepository;
 
     @Autowired
-    public ProductCatalogService(ProductRepository productRepository) {
+    public ProductCatalogService(ProductRepository productRepository, ProductTypeRepository productTypeRepository) {
         this.productRepository = productRepository;
+        this.productTypeRepository = productTypeRepository;
     }
 
     public Product create(Product product) {
@@ -36,5 +40,9 @@ public class ProductCatalogService {
 
     public List<Product> getProductByType(String productType){
         return productRepository.getProductByType_Name(productType);
+    }
+
+    public Iterable<ProductType> getProductTypes(){
+        return productTypeRepository.findAll();
     }
 }

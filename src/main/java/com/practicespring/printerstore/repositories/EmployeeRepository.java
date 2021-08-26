@@ -4,6 +4,7 @@ import com.practicespring.printerstore.models.Employee;
 import org.springframework.data.repository.CrudRepository;
 
 public interface EmployeeRepository extends CrudRepository<Employee, String> {
+
     Iterable<Employee> getAllByEmailIsContaining(String partialEmail);
 
     Iterable<Employee> getAllByFirstNameIsContaining(String partialName);

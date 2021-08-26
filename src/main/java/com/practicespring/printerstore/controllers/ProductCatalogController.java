@@ -2,6 +2,7 @@ package com.practicespring.printerstore.controllers;
 
 import com.practicespring.printerstore.exceptions.ProductNotFoundException;
 import com.practicespring.printerstore.models.Product;
+import com.practicespring.printerstore.models.ProductType;
 import com.practicespring.printerstore.service.ProductCatalogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -30,10 +31,16 @@ public class ProductCatalogController {
         return this.productCatalogService.getProductByType(typeName);
     }
 
+    @GetMapping( "/productTypes")
+    Iterable<ProductType> getProductTypes(){
+        return this.productCatalogService.getProductTypes();
+    }
+
     @GetMapping( "/{id}")
     Product getProductsByType(@PathVariable Long id){
         return this.productCatalogService.findBy(id).orElseThrow(() -> new ProductNotFoundException(id));
     }
+
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping( "")

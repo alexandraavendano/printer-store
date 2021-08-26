@@ -39,14 +39,15 @@ public class Client extends Person {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Client)) return false;
+        if (!super.equals(o)) return false;
         Client client = (Client) o;
-        return Objects.equals(orders, client.orders);
+        return Objects.equals(orders, client.orders) && Objects.equals(creditCards, client.creditCards);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(orders);
+        return Objects.hash(super.hashCode(), orders, creditCards);
     }
 }
 
