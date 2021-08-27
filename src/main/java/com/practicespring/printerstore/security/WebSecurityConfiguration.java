@@ -25,7 +25,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private static final String[] AUTH_WHITELIST = {
             "/users/signup",
-            "/products/**"
+            "/products/**",
+            "/images/**"
     };
 
     public WebSecurityConfiguration(UserDetailsService userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
@@ -57,7 +58,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         CorsConfiguration corsConfiguration = new CorsConfiguration().applyPermitDefaultValues();
         corsConfiguration.setAllowedMethods(allowedMethods);
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        //source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
         source.registerCorsConfiguration("/**", corsConfiguration);
         return source;
     }

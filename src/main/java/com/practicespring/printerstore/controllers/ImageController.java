@@ -25,13 +25,13 @@ public class ImageController {
     }
 
     @GetMapping("")
-    Image getClient(@RequestParam Long id) {
+    Image getImage(@RequestParam Long id) {
         return imageService.findBy(id).orElseThrow(() -> new ImageNotFoundException(id));
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_EMPLOYEE')")
     @PostMapping( "")
-    Image getProducts(@RequestParam("images") MultipartFile files){
+    Image saveImage(@RequestParam("images") MultipartFile files){
         Optional<Image> imageOptional = Optional.empty();
 
         try {
@@ -44,7 +44,7 @@ public class ImageController {
     }
 
     @DeleteMapping("/{id}")
-    void deleteEmployee(@PathVariable Long id) {
+    void deleteImage(@PathVariable Long id) {
         imageService.delete(id);
     }
 }

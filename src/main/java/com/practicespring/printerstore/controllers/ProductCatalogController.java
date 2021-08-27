@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-
 @RestController
 @RequestMapping("/products")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -40,7 +39,6 @@ public class ProductCatalogController {
     Product getProductsByType(@PathVariable Long id){
         return this.productCatalogService.findBy(id).orElseThrow(() -> new ProductNotFoundException(id));
     }
-
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping( "")
