@@ -24,11 +24,9 @@ public class ProductCatalogService {
 
     public Product create(Product product) {
         ProductType pt = product.getType();
-
         if(productTypeRepository.findByNameAndAndSubType(pt.getName(), pt.getSubType()).isEmpty()){
             productTypeRepository.save(pt);
         }
-
         return productRepository.save(product);
     }
 

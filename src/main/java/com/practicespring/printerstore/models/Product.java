@@ -1,7 +1,5 @@
 package com.practicespring.printerstore.models;
 
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -21,7 +19,7 @@ public class Product {
     @ManyToMany
     private List<Image> images;
 
-    @OneToMany
+    @ManyToMany
     private List<Product> customizable;
 
     public Product() {
