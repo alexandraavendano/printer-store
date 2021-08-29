@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.Optional;
 
 public interface ProductTypeRepository extends CrudRepository<ProductType, String> {
-    Optional<ProductType> findByNameAndAndSubType(String name, String subType);
+    Optional<ProductType> findByNameAndSubType(String name, String subType);
 }

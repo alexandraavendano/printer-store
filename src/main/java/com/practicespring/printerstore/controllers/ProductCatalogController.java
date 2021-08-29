@@ -1,12 +1,15 @@
 package com.practicespring.printerstore.controllers;
 
 import com.practicespring.printerstore.exceptions.ProductNotFoundException;
+import com.practicespring.printerstore.models.Order;
 import com.practicespring.printerstore.models.Product;
 import com.practicespring.printerstore.models.ProductType;
 import com.practicespring.printerstore.service.ProductCatalogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/products")
@@ -20,9 +23,13 @@ public class ProductCatalogController {
         this.productCatalogService = productCatalogService;
     }
 
-    @GetMapping( "/all")
-    Iterable<Product> getProducts(){
-        return this.productCatalogService.findAll();
+    @GetMapping("/all")
+    Iterable<Product> getAll(@RequestParam Optional<String> query){
+        if(query.isPresent()) {
+            return productCatalogService.findByPartialQuery(query.get());
+        } else {
+            return productCatalogService.findAll();
+        }
     }
 
     @GetMapping( "")

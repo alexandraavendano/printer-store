@@ -1,5 +1,7 @@
 package com.practicespring.printerstore.service;
 
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Sets;
 import com.practicespring.printerstore.models.Product;
 import com.practicespring.printerstore.models.ProductType;
 import com.practicespring.printerstore.repositories.ProductRepository;
@@ -7,7 +9,6 @@ import com.practicespring.printerstore.repositories.ProductTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,7 +25,7 @@ public class ProductCatalogService {
 
     public Product create(Product product) {
         ProductType pt = product.getType();
-        if(productTypeRepository.findByNameAndAndSubType(pt.getName(), pt.getSubType()).isEmpty()){
+        if(productTypeRepository.findByNameAndSubType(pt.getName(), pt.getSubType()).isEmpty()){
             productTypeRepository.save(pt);
         }
         return productRepository.save(product);
@@ -42,8 +43,16 @@ public class ProductCatalogService {
         return productRepository.findAll();
     }
 
-    public List<Product> getProductByType(String productType){
+    public Iterable<Product> getProductByType(String productType){
         return productRepository.getProductByType_Name(productType);
+    }
+
+    public Iterable<Product> findByPartialQuery(String partialQuery) {
+        Iterable<Product> productByName = productRepository.getProductByNameIsContaining(partialQuery);
+        Iterable<Product> productBySubtype = productRepository.getProductByType_SubTypeIsContaining(partialQuery);
+        Iterable<Product> productBySubtypeName = productRepository.getProductByType_NameIsContaining(partialQuery);
+        Iterable<Product> products = Iterables.concat(productByName,productBySubtype,productBySubtypeName);
+        return Sets.newHashSet(products);
     }
 
     public Iterable<ProductType> getProductTypes(){
