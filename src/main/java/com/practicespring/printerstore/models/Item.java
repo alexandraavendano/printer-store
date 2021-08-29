@@ -11,8 +11,9 @@ public class Item {
     private int id;
     private String height;
     private String width;
-    private double price; //Total price per item including customizations
+    private double price;
     private int quantity;
+    private String designNotes;
 
     @OneToOne
     private State state;
@@ -85,5 +86,13 @@ public class Item {
 
     public void setCustomizations(List<Product> customizations) {
         this.customizations = customizations;
+    }
+
+    public String getDesignNotes() {
+        return designNotes;
+    }
+
+    public void setDesignNotes(String designNotes) {
+        this.designNotes = designNotes;
     }
 }

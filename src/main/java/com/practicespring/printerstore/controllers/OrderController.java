@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @RestController
-@RequestMapping("/users/orders")
 @CrossOrigin(origins = "http://localhost:3000")
 public class OrderController {
     static final Logger LOGGER = Logger.getLogger(OrderController.class.getName());
@@ -22,20 +21,21 @@ public class OrderController {
         this.orderServices = orderServices;
     }
 
-    @PostMapping("")
+    @PostMapping("/users/orders")
     Order createOrder(@RequestBody Order order) {
         LOGGER.log(Level.FINE, "Saving a order");
         return orderServices.create(order);
     }
 
     @PreAuthorize("hasRole('ROLE_USER')")
-    @GetMapping( "/{email}")
+    @GetMapping( "/users/orders/{email}")
     Iterable<Order> getOrderByUserId(@PathVariable String email){
         return orderServices.findBy(email);
     }
 
-    @DeleteMapping("/{id}")
-    void deletePayment(@PathVariable Long id) {
-        orderServices.delete(id);
+    @PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_EMPLOYEE')")
+    @GetMapping( "/orders")
+    Iterable<Order> getOrderByUserId(){
+        return orderServices.findAll();
     }
 }

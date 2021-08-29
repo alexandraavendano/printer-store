@@ -3,7 +3,6 @@ package com.practicespring.printerstore.models;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.List;
 
@@ -17,7 +16,7 @@ public class Order {
     private double balance;
     private double totalPrice;
 
-    @OneToMany(cascade = CascadeType.ALL , orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Item> items;
 
     @ManyToOne(cascade = CascadeType.MERGE)

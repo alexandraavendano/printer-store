@@ -5,7 +5,6 @@ import com.practicespring.printerstore.exceptions.ImageNotFoundException;
 import com.practicespring.printerstore.models.*;
 import com.practicespring.printerstore.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -29,7 +28,6 @@ public class ImageController {
         return imageService.findBy(id).orElseThrow(() -> new ImageNotFoundException(id));
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_EMPLOYEE')")
     @PostMapping( "")
     Image saveImage(@RequestParam("images") MultipartFile files){
         Optional<Image> imageOptional = Optional.empty();
@@ -41,10 +39,5 @@ public class ImageController {
         }
 
         return imageOptional.orElseThrow(ImageNotCreatedException::new);
-    }
-
-    @DeleteMapping("/{id}")
-    void deleteImage(@PathVariable Long id) {
-        imageService.delete(id);
     }
 }

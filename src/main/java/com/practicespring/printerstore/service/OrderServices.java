@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class OrderServices {
@@ -42,11 +41,11 @@ public class OrderServices {
         orderRepository.deleteById(id);
     }
 
-    public Optional<Order> findBy(Long id) {
-        return orderRepository.findById(id);
-    }
-
     public Iterable<Order> findBy(String email) {
         return orderRepository.findByClient_EmailOrderByDateDesc(email);
+    }
+
+    public Iterable<Order> findAll(){
+        return orderRepository.findAll();
     }
 }
