@@ -8,7 +8,7 @@ public class Item {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
     private String height;
     private String width;
     private double price;
@@ -24,11 +24,11 @@ public class Item {
     @ManyToMany
     private List<Product> customizations;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

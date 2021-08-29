@@ -17,5 +17,4 @@ public class StateServices {
     public Iterable<State> getAll() {
         return stateRepository.findAll();
     }
-
 }
