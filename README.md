@@ -44,8 +44,6 @@ This project uses a number of open source projects to work properly:
 
 ## Installation
 
-This application requires [Node.js](https://nodejs.org/) v10+ to run.
-
 1. Install the maven dependencies
 2. Run `producttype.sql`, `role.sql` and `state.sql` in the `printer-store/deploymentResources/insertQueries` folder.
 3. Start the service running the `src/main/java/com/practicespring/printerstore/BasicSpringApplication.java`
