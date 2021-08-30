@@ -1,7 +1,6 @@
 package org.alexandraavendano.printerstore.models;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import java.util.List;
 import java.util.Objects;
@@ -9,8 +8,11 @@ import java.util.Objects;
 @Entity
 public class Client extends Person {
 
-    @ManyToMany
+    @OneToMany
     private List<Order> orders;
+
+    @OneToMany
+    public List<Payment> creditCards;
 
     public Client(){
         super();
@@ -20,9 +22,6 @@ public class Client extends Person {
     public List<Order> getOrders() {
         return orders;
     }
-
-    @OneToMany
-    public List<Payment> creditCards;
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
