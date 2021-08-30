@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Payment {
@@ -72,5 +73,47 @@ public class Payment {
     @JsonProperty
     public void setCvv(String cvv) {
         this.cvv = cvv;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Payment)) return false;
+        Payment payment = (Payment) o;
+        return getYear() == payment.getYear() && getMonth() == payment.getMonth() && Objects.equals(getId(), payment.getId()) && Objects.equals(getCardNumber(), payment.getCardNumber()) && getCardHolderName().equals(payment.getCardHolderName()) && getCvv().equals(payment.getCvv()) && Objects.equals(getClient(), payment.getClient());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getCardNumber(), getCardHolderName(), getYear(), getMonth(), getCvv(), getClient());
+    }
+
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "id=" + id +
+                ", cardNumber='" + cardNumber + '\'' +
+                ", cardHolderName='" + cardHolderName + '\'' +
+                ", year=" + year +
+                ", month=" + month +
+                ", cvv='" + cvv + '\'' +
+                ", client=" + client +
+                '}';
     }
 }
