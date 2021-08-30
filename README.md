@@ -54,6 +54,7 @@ This project uses a number of open source projects to work properly:
 
 ## Learning
 
+- How to handle inheritance in Spring entities. Person -> Client , Person -> Employee
 - Return JWT in the body, because the browser intercept the request, and it filters the authentication headers.
 - The default configuration is to accept only GET and POST, in spring security.
 - One controller with multiple access roles.
