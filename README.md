@@ -51,3 +51,15 @@ This project uses a number of open source projects to work properly:
 
 ## FrontEnd
 [Deploy FrontEnd](https://github.com/alexandraavendano/printer-store-front) for full functionality.
+
+## Learning
+
+- Return JWT in the body, because the browser intercept the request, and it filters the authentication headers.
+- The default configuration is to accept only GET and POST, in spring security.
+- One controller with multiple access roles.
+- Save an image and receive simultaneously a json is impossible.
+- Beans override the application.properties.
+
+- Infinite recursion is avoided when only customizable products can have many raw products. But, raw products would never have a list of products.
+- How to create breakpoints in javascript.
+- Hooks vs Classes in ReactJS.
