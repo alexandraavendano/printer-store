@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class ClientServicesImpl {
+public class ClientServices implements ClientServicesI {
 
     private final ClientRepository clientRepository;
 
     @Autowired
-    public ClientServicesImpl(ClientRepository clientRepository){
+    public ClientServices(ClientRepository clientRepository){
         this.clientRepository = clientRepository;
     }
 

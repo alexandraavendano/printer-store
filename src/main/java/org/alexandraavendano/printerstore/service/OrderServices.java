@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class OrderServices {
+public class OrderServices implements OrderServicesI {
     private final OrderRepository orderRepository;
 
     @Autowired
@@ -18,7 +18,7 @@ public class OrderServices {
         this.orderRepository = orderRepository;
     }
 
-    public double calculateItemsPrice(List<Item> items) {
+    private double calculateItemsPrice(List<Item> items) {
         double total=0D;
 
         for(Item item: items) {

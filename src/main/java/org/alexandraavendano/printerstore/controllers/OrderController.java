@@ -2,6 +2,7 @@ package org.alexandraavendano.printerstore.controllers;
 
 import org.alexandraavendano.printerstore.models.Order;
 import org.alexandraavendano.printerstore.service.OrderServices;
+import org.alexandraavendano.printerstore.service.OrderServicesI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +15,7 @@ import java.util.logging.Logger;
 public class OrderController {
     static final Logger LOGGER = Logger.getLogger(OrderController.class.getName());
 
-    private final OrderServices orderServices;
+    private final OrderServicesI orderServices;
 
     @Autowired
     public OrderController(OrderServices orderServices){

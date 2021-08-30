@@ -2,6 +2,7 @@ package org.alexandraavendano.printerstore.controllers;
 
 import org.alexandraavendano.printerstore.models.Payment;
 import org.alexandraavendano.printerstore.service.PaymentServices;
+import org.alexandraavendano.printerstore.service.PaymentServicesI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,7 +18,7 @@ class PaymentController {
 
     static final Logger LOGGER = Logger.getLogger(PaymentController.class.getName());
 
-    private final PaymentServices paymentServices;
+    private final PaymentServicesI paymentServices;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired

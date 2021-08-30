@@ -3,6 +3,7 @@ package org.alexandraavendano.printerstore.controllers;
 import org.alexandraavendano.printerstore.exceptions.EmployeeNotFoundException;
 import org.alexandraavendano.printerstore.models.Employee;
 import org.alexandraavendano.printerstore.service.EmployeeServices;
+import org.alexandraavendano.printerstore.service.EmployeeServicesI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +15,7 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:3000")
 public class EmployeeController {
 
-    private final EmployeeServices employeeServices;
+    private final EmployeeServicesI employeeServices;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired

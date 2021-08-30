@@ -12,12 +12,12 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Service
-public class ImageService {
+public class ImageServices implements ImageServicesI {
 
     public final ImageRepository imageRepository;
 
     @Autowired
-    public ImageService(ImageRepository imageRepository){
+    public ImageServices(ImageRepository imageRepository){
         this.imageRepository = imageRepository;
     }
 
@@ -33,10 +33,6 @@ public class ImageService {
         }
 
         return imageRepository.save(image);
-    }
-
-    public Iterable<Image> getAll() {
-        return imageRepository.findAll();
     }
 
     public Optional<Image> findBy(Long id) {

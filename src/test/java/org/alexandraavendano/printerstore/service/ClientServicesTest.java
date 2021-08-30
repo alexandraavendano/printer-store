@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ClientServicesTest {
 
     @Autowired
-    private ClientServicesImpl clientServices;
+    private ClientServices clientServices;
 
     @Test
     public void createEmployeeAndFindByEmailTest() {

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class ProductCatalogService {
+public class ProductCatalogService implements ProductCatalogServiceI {
 
     ProductRepository productRepository;
     ProductTypeRepository productTypeRepository;

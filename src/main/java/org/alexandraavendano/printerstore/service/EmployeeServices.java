@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class EmployeeServices {
+public class EmployeeServices implements EmployeeServicesI {
 
     private final EmployeeRepository employeeRepository;
 

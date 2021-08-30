@@ -2,9 +2,9 @@ package org.alexandraavendano.printerstore.controllers;
 
 import org.alexandraavendano.printerstore.exceptions.ImageNotCreatedException;
 import org.alexandraavendano.printerstore.exceptions.ImageNotFoundException;
-import com.practicespring.printerstore.models.*;
 import org.alexandraavendano.printerstore.models.Image;
-import org.alexandraavendano.printerstore.service.ImageService;
+import org.alexandraavendano.printerstore.service.ImageServices;
+import org.alexandraavendano.printerstore.service.ImageServicesI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,16 +17,16 @@ import java.util.Optional;
 @RequestMapping("/images")
 public class ImageController {
 
-    private final ImageService imageService;
+    private final ImageServicesI imageServices;
 
     @Autowired
-    public ImageController(ImageService imageService){
-        this.imageService = imageService;
+    public ImageController(ImageServices imageServices){
+        this.imageServices = imageServices;
     }
 
     @GetMapping("")
     Image getImage(@RequestParam Long id) {
-        return imageService.findBy(id).orElseThrow(() -> new ImageNotFoundException(id));
+        return imageServices.findBy(id).orElseThrow(() -> new ImageNotFoundException(id));
     }
 
     @PostMapping( "")
@@ -34,7 +34,7 @@ public class ImageController {
         Optional<Image> imageOptional = Optional.empty();
 
         try {
-            imageOptional = Optional.of(imageService.create(files));
+            imageOptional = Optional.of(imageServices.create(files));
         } catch (IOException e) {
             e.printStackTrace();
         }

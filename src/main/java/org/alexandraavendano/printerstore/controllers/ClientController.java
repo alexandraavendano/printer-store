@@ -2,7 +2,8 @@ package org.alexandraavendano.printerstore.controllers;
 
 import org.alexandraavendano.printerstore.exceptions.ClientNotFoundException;
 import org.alexandraavendano.printerstore.models.Client;
-import org.alexandraavendano.printerstore.service.ClientServicesImpl;
+import org.alexandraavendano.printerstore.service.ClientServicesI;
+import org.alexandraavendano.printerstore.service.ClientServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -17,11 +18,11 @@ public class ClientController {
 
     static final Logger LOGGER = Logger.getLogger(EmployeeController.class.getName());
 
-    private final ClientServicesImpl clientServices;
+    private final ClientServicesI clientServices;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public ClientController(ClientServicesImpl clientServices, BCryptPasswordEncoder bCryptPasswordEncoder){
+    public ClientController(ClientServices clientServices, BCryptPasswordEncoder bCryptPasswordEncoder){
         this.clientServices = clientServices;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }

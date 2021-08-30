@@ -4,6 +4,7 @@ import org.alexandraavendano.printerstore.exceptions.ProductNotFoundException;
 import org.alexandraavendano.printerstore.models.Product;
 import org.alexandraavendano.printerstore.models.ProductType;
 import org.alexandraavendano.printerstore.service.ProductCatalogService;
+import org.alexandraavendano.printerstore.service.ProductCatalogServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,7 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:3000")
 public class ProductCatalogController {
 
-    ProductCatalogService productCatalogService;
+    ProductCatalogServiceI productCatalogService;
 
     @Autowired
     ProductCatalogController(ProductCatalogService productCatalogService){
