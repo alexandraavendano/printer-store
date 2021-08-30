@@ -1,7 +1,8 @@
-package org.alexandraavendano.printerstore.service;
+package org.alexandraavendano.printerstore.service.impl;
 
 import org.alexandraavendano.printerstore.models.Image;
 import org.alexandraavendano.printerstore.repositories.ImageRepository;
+import org.alexandraavendano.printerstore.service.ImageServicesI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;

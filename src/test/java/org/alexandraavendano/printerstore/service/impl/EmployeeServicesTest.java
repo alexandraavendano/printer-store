@@ -1,4 +1,4 @@
-package org.alexandraavendano.printerstore.service;
+package org.alexandraavendano.printerstore.service.impl;
 
 import com.google.common.collect.ImmutableList;
 import org.alexandraavendano.printerstore.models.Employee;

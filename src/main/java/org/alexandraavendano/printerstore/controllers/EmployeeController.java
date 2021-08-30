@@ -2,7 +2,7 @@ package org.alexandraavendano.printerstore.controllers;
 
 import org.alexandraavendano.printerstore.exceptions.EmployeeNotFoundException;
 import org.alexandraavendano.printerstore.models.Employee;
-import org.alexandraavendano.printerstore.service.EmployeeServices;
+import org.alexandraavendano.printerstore.service.impl.EmployeeServices;
 import org.alexandraavendano.printerstore.service.EmployeeServicesI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

@@ -1,7 +1,8 @@
-package org.alexandraavendano.printerstore.service;
+package org.alexandraavendano.printerstore.service.impl;
 
 import org.alexandraavendano.printerstore.models.Payment;
 import org.alexandraavendano.printerstore.repositories.PaymentRepository;
+import org.alexandraavendano.printerstore.service.PaymentServicesI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

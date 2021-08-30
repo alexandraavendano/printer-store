@@ -3,7 +3,7 @@ package org.alexandraavendano.printerstore.controllers;
 import org.alexandraavendano.printerstore.exceptions.ImageNotCreatedException;
 import org.alexandraavendano.printerstore.exceptions.ImageNotFoundException;
 import org.alexandraavendano.printerstore.models.Image;
-import org.alexandraavendano.printerstore.service.ImageServices;
+import org.alexandraavendano.printerstore.service.impl.ImageServices;
 import org.alexandraavendano.printerstore.service.ImageServicesI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

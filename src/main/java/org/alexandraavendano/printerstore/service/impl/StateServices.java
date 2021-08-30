@@ -1,7 +1,8 @@
-package org.alexandraavendano.printerstore.service;
+package org.alexandraavendano.printerstore.service.impl;
 
 import org.alexandraavendano.printerstore.models.State;
 import org.alexandraavendano.printerstore.repositories.StateRepository;
+import org.alexandraavendano.printerstore.service.StateServicesI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -2,6 +2,7 @@ package org.alexandraavendano.printerstore.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
 public class ProductType {
@@ -24,5 +25,18 @@ public class ProductType {
 
     public void setSubType(String subType) {
         this.subType = subType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ProductType)) return false;
+        ProductType that = (ProductType) o;
+        return Objects.equals(getSubType(), that.getSubType()) && Objects.equals(getName(), that.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getSubType(), getName());
     }
 }

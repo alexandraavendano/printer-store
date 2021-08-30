@@ -2,6 +2,7 @@ package org.alexandraavendano.printerstore.models;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Product {
@@ -90,5 +91,18 @@ public class Product {
                 ", price=" + price +
                 ", type=" + type +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Product)) return false;
+        Product product = (Product) o;
+        return Double.compare(product.getPrice(), getPrice()) == 0 && Objects.equals(getId(), product.getId()) && Objects.equals(getName(), product.getName()) && Objects.equals(getDescription(), product.getDescription()) && Objects.equals(getType(), product.getType()) && Objects.equals(getImages(), product.getImages()) && Objects.equals(getCustomizable(), product.getCustomizable());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName(), getDescription(), getPrice(), getType(), getImages(), getCustomizable());
     }
 }

@@ -1,7 +1,7 @@
 package org.alexandraavendano.printerstore.controllers;
 
 import org.alexandraavendano.printerstore.models.Payment;
-import org.alexandraavendano.printerstore.service.PaymentServices;
+import org.alexandraavendano.printerstore.service.impl.PaymentServices;
 import org.alexandraavendano.printerstore.service.PaymentServicesI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;

@@ -3,7 +3,7 @@ package org.alexandraavendano.printerstore.controllers;
 import org.alexandraavendano.printerstore.exceptions.ClientNotFoundException;
 import org.alexandraavendano.printerstore.models.Client;
 import org.alexandraavendano.printerstore.service.ClientServicesI;
-import org.alexandraavendano.printerstore.service.ClientServices;
+import org.alexandraavendano.printerstore.service.impl.ClientServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;

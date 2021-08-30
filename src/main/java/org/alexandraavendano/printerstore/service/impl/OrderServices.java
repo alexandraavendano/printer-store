@@ -1,9 +1,10 @@
-package org.alexandraavendano.printerstore.service;
+package org.alexandraavendano.printerstore.service.impl;
 
 import org.alexandraavendano.printerstore.models.Item;
 import org.alexandraavendano.printerstore.models.Order;
 import org.alexandraavendano.printerstore.models.Product;
 import org.alexandraavendano.printerstore.repositories.OrderRepository;
+import org.alexandraavendano.printerstore.service.OrderServicesI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,17 +15,19 @@ public class OrderServices implements OrderServicesI {
     private final OrderRepository orderRepository;
 
     @Autowired
-    public OrderServices(OrderRepository orderRepository){
+    public OrderServices(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }
 
     private double calculateItemsPrice(List<Item> items) {
-        double total=0D;
+        double total = 0D;
 
-        for(Item item: items) {
-            total+=item.getPrice()*item.getQuantity();
-            for(Product p: item.getCustomizations()){
-                total+= p.getPrice()* item.getQuantity();
+        for (Item item : items) {
+            total += item.getPrice() * item.getQuantity();
+            if(item.getCustomizations() != null){
+                for (Product p : item.getCustomizations()) {
+                    total += p.getPrice() * item.getQuantity();
+                }
             }
         }
 
@@ -45,7 +48,7 @@ public class OrderServices implements OrderServicesI {
         return orderRepository.findByClient_EmailOrderByDateDesc(email);
     }
 
-    public Iterable<Order> findAll(){
+    public Iterable<Order> findAll() {
         return orderRepository.findAll();
     }
 }

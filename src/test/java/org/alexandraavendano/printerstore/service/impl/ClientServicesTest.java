@@ -1,7 +1,8 @@
-package org.alexandraavendano.printerstore.service;
+package org.alexandraavendano.printerstore.service.impl;
 
 import org.alexandraavendano.printerstore.models.Client;
 import org.alexandraavendano.printerstore.models.Role;
+import org.alexandraavendano.printerstore.service.impl.ClientServices;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +20,13 @@ public class ClientServicesTest {
 
     @Test
     public void createEmployeeAndFindByEmailTest() {
-
         Client expectedClient = new Client();
-        expectedClient.setEmail("client@test.com");
+        expectedClient.setEmail("client5@test.com");
         expectedClient.setFirstName("clientName");
         expectedClient.setLastName("clientLastName");
         expectedClient.setRole(new Role("ROLE_CLIENT"));
         clientServices.create(expectedClient);
-        Client actualClient = clientServices.findBy("client@test.com").get();
+        Client actualClient = clientServices.findBy("client5@test.com").get();
 
         assertEquals(actualClient.getEmail(), expectedClient.getEmail());
         assertEquals(actualClient.getPassword(), expectedClient.getPassword());

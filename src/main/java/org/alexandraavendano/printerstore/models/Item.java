@@ -2,6 +2,7 @@ package org.alexandraavendano.printerstore.models;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Item {
@@ -95,4 +96,33 @@ public class Item {
     public void setDesignNotes(String designNotes) {
         this.designNotes = designNotes;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Item)) return false;
+        Item item = (Item) o;
+        return Double.compare(item.getPrice(), getPrice()) == 0 && getQuantity() == item.getQuantity() && Objects.equals(getId(), item.getId()) && Objects.equals(getHeight(), item.getHeight()) && Objects.equals(getWidth(), item.getWidth()) && Objects.equals(getDesignNotes(), item.getDesignNotes()) && Objects.equals(getState(), item.getState()) && Objects.equals(getImage(), item.getImage()) && Objects.equals(getCustomizations(), item.getCustomizations());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getHeight(), getWidth(), getPrice(), getQuantity(), getDesignNotes(), getState(), getImage(), getCustomizations());
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", height='" + height + '\'' +
+                ", width='" + width + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", designNotes='" + designNotes + '\'' +
+                ", state=" + state +
+                ", image=" + image +
+                ", customizations=" + customizations +
+                '}';
+    }
+
 }

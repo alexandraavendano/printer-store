@@ -1,7 +1,8 @@
-package org.alexandraavendano.printerstore.service;
+package org.alexandraavendano.printerstore.service.impl;
 
 import org.alexandraavendano.printerstore.models.Client;
 import org.alexandraavendano.printerstore.repositories.ClientRepository;
+import org.alexandraavendano.printerstore.service.ClientServicesI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

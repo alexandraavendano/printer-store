@@ -3,7 +3,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.alexandraavendano.printerstore.models.Product;
 import org.alexandraavendano.printerstore.models.ProductType;
-import org.alexandraavendano.printerstore.service.ProductCatalogService;
+import org.alexandraavendano.printerstore.service.impl.ProductCatalogService;
 import org.junit.jupiter.api.Test;
 
 import org.springframework.beans.factory.annotation.Autowired;

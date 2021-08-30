@@ -3,7 +3,7 @@ package org.alexandraavendano.printerstore.controllers;
 import org.alexandraavendano.printerstore.exceptions.ProductNotFoundException;
 import org.alexandraavendano.printerstore.models.Product;
 import org.alexandraavendano.printerstore.models.ProductType;
-import org.alexandraavendano.printerstore.service.ProductCatalogService;
+import org.alexandraavendano.printerstore.service.impl.ProductCatalogService;
 import org.alexandraavendano.printerstore.service.ProductCatalogServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;

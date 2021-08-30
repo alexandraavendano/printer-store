@@ -42,12 +42,20 @@ public class Client extends Person {
         if (!(o instanceof Client)) return false;
         if (!super.equals(o)) return false;
         Client client = (Client) o;
-        return Objects.equals(orders, client.orders) && Objects.equals(creditCards, client.creditCards);
+        return Objects.equals(getOrders(), client.getOrders()) && Objects.equals(getCreditCards(), client.getCreditCards());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), orders, creditCards);
+        return Objects.hash(super.hashCode(), getOrders(), getCreditCards());
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "orders=" + orders +
+                ", creditCards=" + creditCards +
+                '}';
     }
 }
 

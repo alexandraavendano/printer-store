@@ -3,8 +3,9 @@ package org.alexandraavendano.printerstore.security;
 import org.alexandraavendano.printerstore.models.Client;
 import org.alexandraavendano.printerstore.models.Employee;
 import org.alexandraavendano.printerstore.models.Person;
-import org.alexandraavendano.printerstore.service.ClientServices;
-import org.alexandraavendano.printerstore.service.EmployeeServices;
+import org.alexandraavendano.printerstore.service.ClientServicesI;
+import org.alexandraavendano.printerstore.service.impl.ClientServices;
+import org.alexandraavendano.printerstore.service.impl.EmployeeServices;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,7 +18,7 @@ import java.util.Optional;
 
 @Component
 public class ClientDetailsServiceImpl implements UserDetailsService {
-    private final ClientServices clientServices;
+    private final ClientServicesI clientServices;
     private final EmployeeServices employeeServices;
 
     public ClientDetailsServiceImpl(ClientServices clientServices, EmployeeServices employeeServices) {
@@ -40,7 +41,6 @@ public class ClientDetailsServiceImpl implements UserDetailsService {
         }
 
         return new User(validatedUser.getEmail(), validatedUser.getPassword(), Collections.singleton(new SimpleGrantedAuthority(validatedUser.getRole().getName())));
-
     }
 }
 

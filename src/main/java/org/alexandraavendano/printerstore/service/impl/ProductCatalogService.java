@@ -1,4 +1,4 @@
-package org.alexandraavendano.printerstore.service;
+package org.alexandraavendano.printerstore.service.impl;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
@@ -6,6 +6,7 @@ import org.alexandraavendano.printerstore.models.Product;
 import org.alexandraavendano.printerstore.models.ProductType;
 import org.alexandraavendano.printerstore.repositories.ProductRepository;
 import org.alexandraavendano.printerstore.repositories.ProductTypeRepository;
+import org.alexandraavendano.printerstore.service.ProductCatalogServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

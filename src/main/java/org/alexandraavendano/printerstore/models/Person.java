@@ -72,12 +72,12 @@ public class Person {
         if (this == o) return true;
         if (!(o instanceof Person)) return false;
         Person person = (Person) o;
-        return email.equals(person.email) && firstName.equals(person.firstName) && lastName.equals(person.lastName) && password.equals(person.password);
+        return getEmail().equals(person.getEmail()) && Objects.equals(getFirstName(), person.getFirstName()) && Objects.equals(getLastName(), person.getLastName()) && getPassword().equals(person.getPassword()) && Objects.equals(getRole(), person.getRole());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(email, firstName, lastName, password);
+        return Objects.hash(getEmail(), getFirstName(), getLastName(), getPassword(), getRole());
     }
 
     @Override

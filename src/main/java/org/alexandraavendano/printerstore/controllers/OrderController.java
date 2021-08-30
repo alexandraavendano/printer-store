@@ -1,7 +1,7 @@
 package org.alexandraavendano.printerstore.controllers;
 
 import org.alexandraavendano.printerstore.models.Order;
-import org.alexandraavendano.printerstore.service.OrderServices;
+import org.alexandraavendano.printerstore.service.impl.OrderServices;
 import org.alexandraavendano.printerstore.service.OrderServicesI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
